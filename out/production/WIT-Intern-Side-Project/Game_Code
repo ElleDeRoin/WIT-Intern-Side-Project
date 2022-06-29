@@ -1,0 +1,24 @@
+//I Added a JFrame to work for our pop-up window
+//I tested it and it worked in eclipse but I can't get it to show up in visual studio
+//So I'm not sure if it will work for our project
+
+import javax.swing.JFrame;
+import java.awt.Color;
+import java.awt.Container;
+
+public class TEST {
+	public static void main(String args[] )
+	{
+		JFrame f= new JFrame();// creating a Frame
+		f.setTitle("Test");//setting title of the window
+		f.setVisible(true);//if JFrame can be seen or not
+		f.setSize(100,200);//setting size of the window
+		f.setLocation(200,200);//setting location of the window
+		Container c= f.getContentPane();//creating container object
+		c.setBackground(Color.WHITE);//calling setBackground method
+		f.setResizable(true);//allows the user to resize the window
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//specifying close operation
+		}
+}
+
+
