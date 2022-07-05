@@ -27,13 +27,20 @@ public class TicTacToe
         kybd = new Scanner(System.in);//instantiates scanner
     }
     //this method should start a new game for the player. Will create as many rounds as inputed until finished and then display results
+   
     public void play()
     {
-        //startUpScreen();
-        //displayBoard();
+        startUpScreen();
+        displayBoard();
 
         //simulate rounds would recommend for loop dependent on numRounds, then play rounds method below. we can also print out what round player is in and score so far
-        //displayResults();
+        
+        for(int i= 1; i<= numRounds; i++) {
+        	System.out.print("Round #" + i );
+        	playRound();
+        }
+        
+        displayResults();
     }
 //this method should start a new round(take advantage of roundOver variable). Would recommend while loop, should allow player to choose next location
     //display board each round, check if there is a winner, and make it the turn of the next player. when round over reset board
