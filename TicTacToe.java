@@ -46,7 +46,15 @@ public class TicTacToe
     //display board each round, check if there is a winner, and make it the turn of the next player. when round over reset board
     private void playRound()
     {
-
+    	roundOver= false;
+    		while(!roundOver) {
+    			chooseLocation();
+    			displayBoard();
+    			checkForWinner();
+    			
+    			player1Turn = !player1Turn;
+    		}
+    	resetBoard();
     }
 //this method checks for winner, player 1 always starts off unless lost one round therefore should be X(i recommend if statement for this). Remember start counting at 0
     private void checkForWinner()
