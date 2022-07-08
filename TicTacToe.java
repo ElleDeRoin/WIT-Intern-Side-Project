@@ -194,10 +194,24 @@ public class TicTacToe
         }
     }
 //Displays a matrix with the square numbered so player can choose which square to input their letter, use a nested for loop!
-    private void displayChoices()
+ 
+	private void displayChoices()
     {
-
-    }
+    	int choice= 1;
+    	System.out.println("\n");
+    	for(int r= 0; r< board.length; r++) {
+    		for(int c=0; c< board[r].length; c++) {
+    			System.out.print(choice);
+    			if(c< board[r].length-1)
+    				System.out.print("|");
+    			choice++;
+    		}
+    		if(r< board.length-1)
+    			System.out.println("\n-----");
+    		}
+    		System.out.println("\n");
+	}
+	
 //displays results, just use System.out.println with wins and ties. use if and else statement if wanting to separate computer and player 2 wins
     private void displayResults()
     {
