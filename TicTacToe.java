@@ -227,7 +227,17 @@ public class TicTacToe
 //displays board. use nested for loop with | and -- to seperate matrix, just looks pretty
     private void displayBoard()
     {
-
+    	System.out.print("\n");
+    	for(int r= 0; r< board.length; r++) {
+    		for(int c= 0; c< board[r].length; c++) {
+    			System.out.print(board[r][c]);
+    			if(c< board[r].length-1)
+    				System.out.println("|");
+    		}
+    		if(r< board.length-1)
+    			System.out.println("\n-----");
+    	}
+    	System.out.println("\n");
     }
 //Starts up screen left in bcs why not
     private void startUpScreen()
