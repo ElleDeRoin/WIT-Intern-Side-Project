@@ -121,11 +121,20 @@ public class TicTacToe
 
     private void chooseLocation()
     {
-        //displayChoices();
+        displayChoices();
         //ask for choice and determine if valid choice
         //we can print out whose choice it is with an if statement
         //left if statement here in case not familiar with scanner class, ask me if you want me to explain this!
-        if(numPlayers == 2 ||
+                
+	    if(player1Turn)
+        	System.out.print("Player1's Turn");
+        	else
+        	if(numPlayers == 2)
+        		System.out.print("Player2's Turn");
+        	else
+        		System.out.print("Computer's Turn");
+        
+	if(numPlayers == 2 ||
                 (player1Turn && numPlayers == 1))
         {
             int square = kybd.nextInt();
