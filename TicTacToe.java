@@ -252,8 +252,10 @@ public class TicTacToe
         System.out.println("Enjoy the game and good luck.");
     }
 //resets board, set every spot on board to BLANK. use nested for loop
-    private void resetBoard()
+private void resetBoard()
     {
-
+    	for(int r= 0; r< board.length; r++)
+    		for(int c= 0; c< board[r].length; c++)
+    			board[r][c] = BLANK;
     }
 }
