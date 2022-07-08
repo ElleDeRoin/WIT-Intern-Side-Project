@@ -60,15 +60,63 @@ public class TicTacToe
     private void checkForWinner()
     {
 
+        int player= 0;
+    	String let= "";
+    	
+    	if(player1Turn) {
+    		player= 0;
+    		let= X;
+    	}
+    	else {
+    		player= 1;
+    		let= O;
+    	}
+        
         //check rows for a winner, use for loop start at 0 til board length. when checking is 3 in a row remember board is 3 by 3
         //if winner is found set roundOver to true and add wins to the player's score (no need for return value)
 
+        for(int r= 0; r< board.length; r++)
+    		if(board[r][0].equals(let) && board[r][1].equals(let) && board[r][2].equals(let)) {
+    			roundOver= true;
+    			wins[player]++;
+    			return;
+    		}
+        
         //check cols for a winner, use for loop start at 0 til board length. when checking is 3 in a row remember board is 3 by 3
         //if winner is found set roundOver to true and add wins to the player's score (no need for return value)
 
+        for(int c= 0; c< board[0].length; c++)
+    		if(board[c][0].equals(let) && board[c][1].equals(let) && board[c][2].equals(let)) {
+    			roundOver= true;
+    			wins[player]++;
+    			return;
+    		}
+        
         //check diagonal for a winner. there are only 2 options for diagonal really, her we can use if statement should be similar to horizontal and vertical
 
+        if(board[2][0].equals(let) && board[1][1].equals(let) && board[0][2].equals(let)) {
+				roundOver= true;
+				wins[player]++;
+				return;
+    	}
+    	
+    	if(board[0][0].equals(let) && board[1][1].equals(let) && board[2][2].equals(let)) {
+    			roundOver= true;
+    			wins[player]++;
+    			return;
+    	}
+        
         //check if tie, should check if there is a blank on the bpard and set round over to false, else round over is set to true
+            
+    	for(int r= 0; r< board.length; r++)
+    	for(int c= 0; c< board[r].length; c++)
+    	
+    	if(board[r][c].equals(BLANK)) {
+    			roundOver= false;
+    			return;
+    	}
+    	roundOver=true;
+        
     }
 
     private void chooseLocation()
