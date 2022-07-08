@@ -127,12 +127,12 @@ public class TicTacToe
         //left if statement here in case not familiar with scanner class, ask me if you want me to explain this!
                 
 	    if(player1Turn)
-        	System.out.print("Player1's Turn");
+        	System.out.println("Player1's Turn");
         	else
         	if(numPlayers == 2)
-        		System.out.print("Player2's Turn");
+        		System.out.println("Player2's Turn");
         	else
-        		System.out.print("Computer's Turn");
+        		System.out.println("Computer's Turn");
         
 	if(numPlayers == 2 ||
                 (player1Turn && numPlayers == 1))
