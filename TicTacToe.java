@@ -14,7 +14,7 @@ public class TicTacToe
     private boolean player1Turn;//keeps track of which players turn it is. if true player 1, else either player 2 or computer's turn
     private Scanner kybd;//scanner to get input from players
 
-    //constructor, default values for each game, takes in 1 oe 2 players to decide whether computer will play, as well as how many rounds will be played before final results posted
+    //constructor, default values for each game, takes in 1 or 2 players to decide whether computer will play, as well as how many rounds will be played before final results posted
     public TicTacToe(int players, int rounds)
     {
         numPlayers = players;
@@ -23,7 +23,7 @@ public class TicTacToe
         resetBoard();
         roundOver = false;//in order to start game, all other methods will depend on this boolean to see if round is over
         wins = new int[2];//an array of ints, keeps track of the 2 player's(may be player and computer or 2 seperate players) wins per game
-        player1Turn = true;//player 1 will start automatically, after first loss switches to computer
+        player1Turn = true;//player 1 will start automatically, after first loss switches to computer/player2
         kybd = new Scanner(System.in);//instantiates scanner
     }
     //this method should start a new game for the player. Will create as many rounds as inputed until finished and then display results
@@ -39,7 +39,6 @@ public class TicTacToe
         	System.out.print("Round #" + i );
         	playRound();
         }
-        
         displayResults();
     }
 //this method should start a new round(take advantage of roundOver variable). Would recommend while loop, should allow player to choose next location
@@ -92,7 +91,7 @@ public class TicTacToe
     			return;
     		}
         
-        //check diagonal for a winner. there are only 2 options for diagonal really, her we can use if statement should be similar to horizontal and vertical
+        //check diagonal for a winner. there are only 2 options for diagonal really, here we can use if statement should be similar to horizontal and vertical
 
         if(board[2][0].equals(let) && board[1][1].equals(let) && board[0][2].equals(let)) {
 				roundOver= true;
@@ -106,16 +105,17 @@ public class TicTacToe
     			return;
     	}
         
-        //check if tie, should check if there is a blank on the bpard and set round over to false, else round over is set to true
+        //check if tie, should check if there is a blank on the board bcs if not then there is tie(we could detect if there is no chance of a win after a couple round but i dunno how and i suck at tic tac toes tbh)
             
     	for(int r= 0; r< board.length; r++)
-    	for(int c= 0; c< board[r].length; c++)
+    	    for(int c= 0; c< board[r].length; c++)
     	
-    	if(board[r][c].equals(BLANK)) {
+    	    if(board[r][c].equals(BLANK))
+            {
     			roundOver= false;
     			return;
-    	}
-    	roundOver=true;
+    	    }
+        roundOver=true;
         
     }
 
@@ -128,14 +128,13 @@ public class TicTacToe
                 
 	    if(player1Turn)
         	System.out.println("Player1's Turn");
-        	else
+        else
         	if(numPlayers == 2)
         		System.out.println("Player2's Turn");
         	else
         		System.out.println("Computer's Turn");
         
-	if(numPlayers == 2 ||
-                (player1Turn && numPlayers == 1))
+	if(numPlayers == 2 || (player1Turn && numPlayers == 1))
         {
             int square = kybd.nextInt();
             placeSymbol(square);
@@ -146,7 +145,8 @@ public class TicTacToe
             placeSymbol(square);
         }
     }
-//this method is for the "AI" we can implement this later, or improve mine. Kinda forgot how i did this but if you need help I can def explain
+//this method is for computer generate choice, the 2 if's are to see if we are X or O
+    //checks if the spot is available and honestly loophole is that the computer will always choose the same spots in order for each round, just  a  place holder for now
     private int computerChoice()
     {
         int sentinel = 0;
@@ -232,14 +232,14 @@ public class TicTacToe
     		for(int c= 0; c< board[r].length; c++) {
     			System.out.print(board[r][c]);
     			if(c< board[r].length-1)
-    				System.out.println("|");
+    				System.out.print("|");
     		}
     		if(r< board.length-1)
     			System.out.println("\n-----");
     	}
     	System.out.println("\n");
     }
-//Starts up screen left in bcs why not
+//Starts up screen lmk if you need me to explain this , but it's just sopln
     private void startUpScreen()
     {
         System.out.println("Tic-Tac-Toe\n");
@@ -251,7 +251,7 @@ public class TicTacToe
         System.out.println("Game will be " + numRounds + " rounds");
         System.out.println("Enjoy the game and good luck.");
     }
-//resets board, set every spot on board to BLANK. use nested for loop
+//resets board, set every spot on board to BLANK. use nested for loop to get each spot on board
 private void resetBoard()
     {
     	for(int r= 0; r< board.length; r++)
