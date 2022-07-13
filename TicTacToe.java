@@ -1,5 +1,5 @@
+import java.lang.Math;
 import java.util.Scanner;
-
 public class TicTacToe
 {
     //PIVs
@@ -85,7 +85,7 @@ public class TicTacToe
         //if winner is found set roundOver to true and add wins to the player's score (no need for return value)
 
         for(int c= 0; c< board[0].length; c++)
-    		if(board[c][0].equals(let) && board[c][1].equals(let) && board[c][2].equals(let)) {
+    		if(board[0][c].equals(let) && board[1][c].equals(let) && board[2][c].equals(let)) {
     			roundOver= true;
     			wins[player]++;
     			return;
@@ -109,12 +109,11 @@ public class TicTacToe
             
     	for(int r= 0; r< board.length; r++)
     	    for(int c= 0; c< board[r].length; c++)
-    	
-    	    if(board[r][c].equals(BLANK))
-            {
-    			roundOver= false;
-    			return;
-    	    }
+    	        if(board[r][c].equals(BLANK))
+                {
+    			    roundOver= false;
+    			    return;
+    	        }
         roundOver=true;
         
     }
@@ -127,14 +126,14 @@ public class TicTacToe
         //left if statement here in case not familiar with scanner class, ask me if you want me to explain this!
                 
 	    if(player1Turn)
-        	System.out.println("Player1's Turn");
+        	System.out.print("Player 1's Choice");
         else
         	if(numPlayers == 2)
-        		System.out.println("Player2's Turn");
+        		System.out.println("Player 2's Choice");
         	else
-        		System.out.println("Computer's Turn");
+        		System.out.println("Computer's Choice");
         
-	if(numPlayers == 2 || (player1Turn && numPlayers == 1))
+	    if(numPlayers == 2 || (player1Turn && numPlayers == 1))
         {
             int square = kybd.nextInt();
             placeSymbol(square);
@@ -142,6 +141,7 @@ public class TicTacToe
         else
         {
             int square = computerChoice();
+            System.out.println("*** Computer Choice: " + square + " ***");
             placeSymbol(square);
         }
     }
@@ -149,35 +149,11 @@ public class TicTacToe
     //checks if the spot is available and honestly loophole is that the computer will always choose the same spots in order for each round, just  a  place holder for now
     private int computerChoice()
     {
-        int sentinel = 0;
-        while (sentinel != 0){
-
-        }
-    int x=0;
-    if(numRounds%2==0)
-    {
-      if(5+x<=9 && !(board[(5+x)/3][(5+x)%3]==O))
-      {
-        return 5+x;
-      }
-      else if(5-x>0 && !(board[(5+x)/3][(5+x)%3]==O))
-      {
-        return 5-x;
-      }
-    }
-    else 
-    {
-      if(5+x<=9 && !(board[(5+x)/3][(5+x)%3]==X))
-      {
-        return 5+x;
-      }
-      else if(5-x>0 && !(board[(5+x)/3][(5+x)%3]==X))
-      {
-        return 5-x;
-      }
-    }
-    x++;
-    return 0;
+        int rand;
+      do {
+          rand = (int) (Math.random() * 9) + 1;
+      } while(!board[(rand-1)/3][(rand-1)%3].equals(BLANK));
+      return rand;
     }
 //this method just places the symbol in whatever part of the matrix chosen. Kinda not intuitive so left here to explain if ya'll want me to
     private void placeSymbol(int square)
@@ -190,8 +166,9 @@ public class TicTacToe
                 board[row][col] = X;
             else
                 board[row][col] = O;
-            //player1Turn = !player1Turn;
         }
+//        player1Turn = !player1Turn;
+
     }
 //Displays a matrix with the square numbered so player can choose which square to input their letter, use a nested for loop!
  
