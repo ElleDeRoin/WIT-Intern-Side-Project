@@ -167,7 +167,11 @@ public class TicTacToe
             else
                 board[row][col] = O;
         }
-//        player1Turn = !player1Turn;
+        else{
+            System.out.println("Invalid, please choose different spot!");
+            square= kybd.nextInt();
+            placeSymbol(square);
+        }
 
     }
 //Displays a matrix with the square numbered so player can choose which square to input their letter, use a nested for loop!
